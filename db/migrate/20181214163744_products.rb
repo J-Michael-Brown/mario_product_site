@@ -10,8 +10,8 @@ class Products < ActiveRecord::Migration[5.2]
     create_table :reviews do |t|
       t.column :username, :string
       t.column :rating, :integer
-      r.column :scruteny, :text
-      
+      t.column :content_body, :text
+
     end
   end
 end
