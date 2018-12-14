@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_191450) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "product_id"
-    t.string "username"
+    t.string "user_title"
     t.integer "rating"
     t.text "content_body"
   end

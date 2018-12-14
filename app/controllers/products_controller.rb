@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @reviews = DB.exec("SELECT 'reviews'.* FROM 'reviews' WHERE 'reviews'.'product_id' = $#{@product.id};")
   end
 
   def new

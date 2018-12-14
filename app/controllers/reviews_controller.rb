@@ -3,14 +3,14 @@ require 'pry'
 class ReviewsController < ApplicationController
   def new
     @product = Product.find(params[:product_id])
-    @review = Review.new
+    @review = @product.reviews.new
   end
 
   def create
     @product = Product.find(params[:product_id])
-    @review = Review.new(review_params)
+    @review = @product.reviews.new(review_params)
     if @review.save
-      redirect_to  product_reviews_path
+      redirect_to  product_path(@review.product)
     else
       render :new
     end
@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
     @product = Product.find(params[:product_id])
     @review= Review.find(params[:id])
     if @review.update(review_params)
-      redirect_to product_reviews_path
+      redirect_to product_path(@review.product)
     else
       render :edit
     end
@@ -40,6 +40,6 @@ class ReviewsController < ApplicationController
 
 private
   def review_params
-    params.require(:review).permit(:username, :content_body, :rating) # permit takes a *splat
+    params.require(:review).permit(:user_title, :content_body, :rating) # permit takes a *splat
   end
 end

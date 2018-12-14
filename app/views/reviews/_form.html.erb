@@ -6,6 +6,10 @@
   <%= f.label :username %>
   <%= f.text_field :username %>
   <%= f.label :rating %>
-  <%= f.collection_select :rating, :to_int, (1..5), "#{:to_int} star#{if(:to_int != '1');'s';end}", include_blank: true %>
+  <%# <%= f.collection_select(:rating, (1..5), :to_int, "#{:to_int} star#{if(:to_int != '1');'s';end}", {:prompt => 'How would you rate this?'}) %> %>
+  <%= f.select(:rating, (1..5).collect {|number| [ "#{number} star#{if(number > 1);'s';end}", number.to_i ] }, {:prompt => 'How would you rate this?'}) %>
+  <%# select("post", "person_id", Person.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }) %>
+  <%# collection_select(:post, :author_id, Author.all, :id, :name_with_initial, prompt: true) %>
+  <%# f.collection_select :user_id, User.order(:username), :id, :username, include_blank: true %>
   <p><%= f.submit %></p>
 <% end %>
