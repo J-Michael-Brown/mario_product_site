@@ -1,0 +1,11 @@
+<%= render('layouts/errors', :object => @review) %>
+
+<%= form_for [@product, @review] do |f| %>
+  <%= f.label :content_body %>
+  <%= f.text_field :content_body %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :rating %>
+  <%= f.collection_select :rating, :to_int, (1..5), "#{:to_int} star#{if(:to_int != '1');'s';end}", include_blank: true %>
+  <p><%= f.submit %></p>
+<% end %>
