@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+ .product-list dt {
+   margin-left: 8%;
+ }
+ .product-list dd {
+   margin-left: 8%;
+ }

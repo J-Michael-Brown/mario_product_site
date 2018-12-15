@@ -1,9 +1,17 @@
 <h1>Products</h1>
-
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.name, product_path(product) %></li>
-  <% end %>
-</ul>
 <hr>
 <%= link_to "New Product", new_product_path %>
+<hr>
+
+<div class="product-list">
+  <dl>
+    <% @products.each do |product| %>
+      <dt><%= link_to product.name, product_path(product) %></dt>
+      <% if product.rating %>
+        <dd><%= product.rating %> star average</dd>
+      <% else %>
+        <dd>*please leave a rating*</dd>
+      <% end %>
+    <% end %>
+  </dl>
+</div>
